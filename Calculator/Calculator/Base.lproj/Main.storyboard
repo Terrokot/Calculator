@@ -243,6 +243,23 @@
                     <connections>
                         <outlet property="View" destination="8bC-Xf-vdC" id="FE8-EL-Ycd"/>
                         <outlet property="bottomView" destination="9NM-jM-5Hk" id="pqR-WI-7Oa"/>
+                        <outlet property="button0" destination="oDW-LJ-2cW" id="WPa-an-DDX"/>
+                        <outlet property="button00" destination="X2U-4q-o2h" id="31Y-jh-OcU"/>
+                        <outlet property="button1" destination="1Ll-4d-gUq" id="MLw-as-RmK"/>
+                        <outlet property="button2" destination="l1r-di-A3b" id="Owo-jd-qXc"/>
+                        <outlet property="button3" destination="eIn-tu-T67" id="ry7-CO-ipG"/>
+                        <outlet property="button4" destination="O0j-Fr-22R" id="Y4D-g2-i8v"/>
+                        <outlet property="button5" destination="6rY-Pf-ESr" id="aox-Sf-NeW"/>
+                        <outlet property="button6" destination="qkd-po-iZe" id="g4p-zV-dCx"/>
+                        <outlet property="button7" destination="3AV-Xr-rbz" id="zSD-Ty-2xN"/>
+                        <outlet property="button8" destination="iZN-xS-MSU" id="2jG-AS-RXj"/>
+                        <outlet property="button9" destination="WqD-io-WaX" id="5m7-Mv-Xpf"/>
+                        <outlet property="buttonClear" destination="UBh-5f-deC" id="KlR-Pm-Znw"/>
+                        <outlet property="buttonDivision" destination="jad-JS-Sfa" id="b0M-2y-cvf"/>
+                        <outlet property="buttonMinus" destination="GSf-CU-f7G" id="Wgr-Ch-jv3"/>
+                        <outlet property="buttonMultiplication" destination="ncP-qg-DgA" id="vqG-7b-835"/>
+                        <outlet property="buttonPlus" destination="ubn-Tc-gcd" id="28W-hM-KjP"/>
+                        <outlet property="buttonPoint" destination="3yE-f6-vzL" id="VCQ-Lc-96o"/>
                         <outlet property="controlRow" destination="aiT-FM-QX0" id="39O-cP-2TX"/>
                         <outlet property="equally" destination="Pbn-rq-vyz" id="8Ai-ZL-lCG"/>
                         <outlet property="firstRow" destination="Sp8-Nb-2h8" id="QFx-jx-KHC"/>
