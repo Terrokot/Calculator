@@ -59,7 +59,9 @@ class ViewController: UIViewController {
             } else {
                 resultLabel.text! += String(sender.tag)
                 task.text! += String(sender.tag)
-                currentValue = Double(resultLabel.text!)!
+                if let b = Double(resultLabel.text!) {
+                    currentValue = b
+                } else { breaker = true }
                 
             }
         }
@@ -189,6 +191,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         layoutSet()
+     
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -204,7 +207,6 @@ class ViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         //MARK: Rectangles
-        bottomView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
         
         //MARK: Buttons
         equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
@@ -221,41 +223,73 @@ class ViewController: UIViewController {
     private func layoutSet() {
         if orientation == .landscape {
             //MARK: LANDSCAPE
+            let landscapeButtonSize: CGFloat = 74
+            
             
             // frame and position
             //MARK: Views
             topView.frame = CGRect(x: 0, y: 0, width: 301, height: 414)
             bottomView.frame = CGRect(x: 301, y: 0, width: 435, height: 414)
             
+            resultLabel.frame = CGRect(x: 0, y: 20, width: 301 - 30 , height: 66)
+            resultLabel.font = UIFont(name: "Futura-Medium", size: 50)
+            
+            task.frame = CGRect(x: 20, y: 355, width: 301, height: 24)
+            task.font = UIFont(name: "Futura-Medium", size: 24)
+            task.textAlignment = .left
             
             
             //MARK: Buttons
             
-            firstRow.frame = CGRect(x: 0, y: 0, width: 435, height: 74)
-            secondRow.frame = CGRect(x: 0, y: 74 + 10, width: 435, height: 74)
-            thirdRow.frame = CGRect(x: 0, y: (74 + 10) * 2, width: 435, height: 74)
-            fouthRow.frame = CGRect(x: 0, y: (74 + 10) * 3, width: 435, height: 74)
-            controlRow.frame = CGRect(x: 0, y: (74 + 10) * 4, width: 435, height: 74)
+            //FistRow
             
-            let landscapeButtonSize = CGSize(width: 74, height: 74)
-            button0.frame.size = landscapeButtonSize
-            button00.frame.size = landscapeButtonSize
-            button1.frame.size = landscapeButtonSize
-            button2.frame.size = landscapeButtonSize
-            button3.frame.size = landscapeButtonSize
-            button4.frame.size = landscapeButtonSize
-            button5.frame.size = landscapeButtonSize
-            button6.frame.size = landscapeButtonSize
-            button7.frame.size = landscapeButtonSize
-            button8.frame.size = landscapeButtonSize
-            button9.frame.size = landscapeButtonSize
+            firstRow.frame = CGRect(x: 0, y: 5, width: 435, height: 74)
             
-            buttonDivision.frame.size = landscapeButtonSize
-            buttonMultiplication.frame.size = landscapeButtonSize
-            buttonMinus.frame.size = landscapeButtonSize
-            buttonPlus.frame.size = landscapeButtonSize
-            buttonPoint.frame.size = landscapeButtonSize
-            buttonClear.frame.size = landscapeButtonSize
+            button7.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button8.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button9.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonDivision.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            
+            //SecondRow
+            secondRow.frame = CGRect(x: 0, y: 5 + 74 + 10, width: 435, height: 74)
+            
+            button4.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button5.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button5.layer.cornerRadius = landscapeButtonSize / 2
+            button5.layer.borderWidth = 3
+            button5.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+            button6.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonMultiplication.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //ThirdROW
+            thirdRow.frame = CGRect(x: 0, y: 5 + (74 + 10) * 2, width: 435, height: 74)
+            
+            button1.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button2.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button3.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonMinus.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //FourthROW
+            fouthRow.frame = CGRect(x: 0, y: 5 + (74 + 10) * 3, width: 435, height: 74)
+            
+            button0.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button00.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            buttonPoint.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            
+            
+            buttonPlus.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //ControlRow
+            controlRow.frame = CGRect(x: 0, y: 5 + (74 + 10) * 4, width: 435, height: 74)
+            
+            buttonClear.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            equally.frame = CGRect(x: 36 + landscapeButtonSize + 20, y: 2, width: landscapeButtonSize, height: landscapeButtonSize)
             
             equally.frame.size = CGSize(width: 266, height: 64)
             equally.layer.cornerRadius = equally.frame.height / 2
@@ -273,45 +307,88 @@ class ViewController: UIViewController {
             
         } else {
             //MARK: PORTRAIT
+            
+            let portraitButtonSize: CGFloat = 88
+            
+            
             // frame and position
             //MARK: Views
             
             topView.frame = CGRect(x: 0, y: 0, width: 414, height: 250)
             bottomView.frame = CGRect(x: 0, y: 250, width: 414, height: 486)
+            
+            resultLabel.frame = CGRect(x: 0, y: 142, width: 414, height: 70)
+            resultLabel.font = UIFont(name: "Futura-Medium", size: 70)
+
+            task.frame = CGRect(x: 0, y: 89, width: 414, height: 36)
+            task.font = UIFont(name: "Futura-Medium", size: 24)
+            task.textAlignment = .right
+
+
             //MARK: Buttons
+            
+            //FistRow
             
             
             firstRow.frame = CGRect(x: 0, y: 0, width: 435, height: 88)
+            
+            button7.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button8.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button9.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            buttonDivision.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            
+            //SecondRow
+            
+            
             secondRow.frame = CGRect(x: 0, y: 88 + 10, width: 435, height: 88)
+            
+            button4.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button5.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button5.layer.cornerRadius = portraitButtonSize / 2
+            button6.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            buttonMultiplication.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            //ThirdRow
+            
             thirdRow.frame = CGRect(x: 0, y: (88 + 10) * 2, width: 435, height: 88)
+            
+            
+            button1.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button2.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button3.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            buttonMinus.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            
+            // FourthRow
+            
+            
             fouthRow.frame = CGRect(x: 0, y: (88 + 10) * 3, width: 435, height: 88)
+            
+            
+            button0.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button00.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            buttonPoint.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            
+            buttonPlus.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            // ControlRow
+            
+            
             controlRow.frame = CGRect(x: 0, y: (88 + 10) * 4, width: 435, height: 88)
             
             
-            let portraitButtonSize = CGSize(width: 88, height: 88)
-            button0.frame.size = portraitButtonSize
-            button00.frame.size = portraitButtonSize
-            button1.frame.size = portraitButtonSize
-            button2.frame.size = portraitButtonSize
-            button3.frame.size = portraitButtonSize
-            button4.frame.size = portraitButtonSize
-            button5.frame.size = portraitButtonSize
-            button6.frame.size = portraitButtonSize
-            button7.frame.size = portraitButtonSize
-            button8.frame.size = portraitButtonSize
-            button9.frame.size = portraitButtonSize
             
-            buttonDivision.frame.size = portraitButtonSize
-            buttonMultiplication.frame.size = portraitButtonSize
-            buttonMinus.frame.size = portraitButtonSize
-            buttonPlus.frame.size = portraitButtonSize
-            buttonPoint.frame.size = portraitButtonSize
-            buttonClear.frame.size = portraitButtonSize
+            buttonClear.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            buttonClear.titleLabel?.textAlignment = .center
             
-            equally.frame.size = CGSize(width: 266, height: 68)
+            equally.frame = CGRect(x: 16 + portraitButtonSize + 15, y: 10, width: 266, height: 68)
             equally.layer.cornerRadius = equally.frame.height / 2
             
-            //FistRow
             
             
             
