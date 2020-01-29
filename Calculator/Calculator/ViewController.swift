@@ -17,13 +17,10 @@ class ViewController: UIViewController {
     var performMath = false
     var breaker = true
     
-    
-    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var task: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-    
     
     enum DeviceOrientation {
         case portrait
@@ -129,16 +126,11 @@ class ViewController: UIViewController {
             operation = 0
             breaker = true
         }
-        
     }
     
     //MARK: UI
     
-    
-    
     //1st row
-    
-    
     @IBOutlet weak var firstRow: UIView!
     @IBOutlet weak var button7: UIButton!
     @IBOutlet weak var button8: UIButton!
@@ -146,36 +138,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonDivision: UIButton!
     
     //2nd row
-    
-    
     @IBOutlet weak var secondRow: UIView!
     @IBOutlet weak var button4: UIButton!
     @IBOutlet weak var button5: UIButton!
     @IBOutlet weak var button6: UIButton!
     @IBOutlet weak var buttonMultiplication: UIButton!
     
-    
-    
     //3rd row
-    
-    
     @IBOutlet weak var thirdRow: UIView!
     @IBOutlet weak var button1: UIButton!
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var buttonMinus: UIButton!
     
-    
-    
     //4th row
-    
     @IBOutlet weak var fouthRow: UIView!
     @IBOutlet weak var button00: UIButton!
     @IBOutlet weak var button0: UIButton!
     @IBOutlet weak var buttonPoint: UIButton!
     @IBOutlet weak var buttonPlus: UIButton!
-    
-    
     
     // controlRow
     @IBOutlet weak var controlRow: UIView!
@@ -189,18 +170,24 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        layoutSet()
-    }
-    
     override func viewWillLayoutSubviews() {
         orientationSet(orientation: &orientation)
-
-        //MARK: Rectangles
         
-        //MARK: Buttons
-        equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
-        layoutSet()
+        switch UIDevice.current.userInterfaceIdiom {
+            
+        case .phone:
+            iphoneLayoutSet()
+        case .pad:
+            print("yyyyyyy")
+        case .unspecified:
+            break
+        case .tv:
+            break
+        case .carPlay:
+            break
+        @unknown default:
+            break
+        }
         print("крыж по вашему распоряжению прибыл")
     }
     
@@ -210,11 +197,11 @@ class ViewController: UIViewController {
         } else { orientation =  .landscape }
     }
     
-    private func layoutSet() {
+    private func iphoneLayoutSet() {
         if orientation == .landscape {
             //MARK: LANDSCAPE
-            let landscapeButtonSize: CGFloat = 74
             
+            let landscapeButtonSize: CGFloat = 74
             
             // frame and position
             //MARK: Views
@@ -228,7 +215,6 @@ class ViewController: UIViewController {
             task.font = UIFont(name: "Futura-Medium", size: 24)
             task.textAlignment = .left
             
-            
             //MARK: Buttons
             
             //FistRow
@@ -240,7 +226,6 @@ class ViewController: UIViewController {
             button9.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             
             buttonDivision.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
-            
             
             //SecondRow
             secondRow.frame = CGRect(x: 0, y: 5 + 74 + 10, width: 435, height: 74)
@@ -270,8 +255,6 @@ class ViewController: UIViewController {
             button00.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             buttonPoint.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             
-            
-            
             buttonPlus.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             
             //ControlRow
@@ -283,25 +266,12 @@ class ViewController: UIViewController {
             
             equally.frame.size = CGSize(width: 266, height: 64)
             equally.layer.cornerRadius = equally.frame.height / 2
-            
-            
-            
-            
-            
-            
-            
-            //Decoration
-            
-            
-            
+            equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
             
         } else {
             //MARK: PORTRAIT
-            
             let portraitButtonSize: CGFloat = 88
             
-            
-            // frame and position
             //MARK: Views
             
             topView.frame = CGRect(x: 0, y: 0, width: 414, height: 250)
@@ -309,17 +279,14 @@ class ViewController: UIViewController {
             
             resultLabel.frame = CGRect(x: 0, y: 142, width: 414, height: 70)
             resultLabel.font = UIFont(name: "Futura-Medium", size: 70)
-
+            
             task.frame = CGRect(x: 0, y: 89, width: 414, height: 36)
             task.font = UIFont(name: "Futura-Medium", size: 24)
             task.textAlignment = .right
-
-
+            
             //MARK: Buttons
             
             //FistRow
-            
-            
             firstRow.frame = CGRect(x: 0, y: 0, width: 435, height: 88)
             
             button7.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
@@ -328,10 +295,7 @@ class ViewController: UIViewController {
             
             buttonDivision.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
-            
             //SecondRow
-            
-            
             secondRow.frame = CGRect(x: 0, y: 88 + 10, width: 435, height: 88)
             
             button4.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
@@ -342,9 +306,7 @@ class ViewController: UIViewController {
             buttonMultiplication.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
             //ThirdRow
-            
             thirdRow.frame = CGRect(x: 0, y: (88 + 10) * 2, width: 435, height: 88)
-            
             
             button1.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button2.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
@@ -352,44 +314,31 @@ class ViewController: UIViewController {
             
             buttonMinus.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
-            
             // FourthRow
-            
-            
             fouthRow.frame = CGRect(x: 0, y: (88 + 10) * 3, width: 435, height: 88)
-            
             
             button0.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button00.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             buttonPoint.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
-            
             buttonPlus.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
             // ControlRow
-            
-            
             controlRow.frame = CGRect(x: 0, y: (88 + 10) * 4, width: 435, height: 88)
-            
-            
             
             buttonClear.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
             buttonClear.titleLabel?.textAlignment = .center
             
             equally.frame = CGRect(x: 16 + portraitButtonSize + 15, y: 10, width: 266, height: 68)
             equally.layer.cornerRadius = equally.frame.height / 2
-            
-            
-            
-            
-            
-            //Decoration
-            
-            
-            
+            equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
         }
     }
     
+    private func ipadLayoutSet() {
+        
+    }
+
 }
 
 
