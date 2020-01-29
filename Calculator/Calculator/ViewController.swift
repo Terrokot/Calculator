@@ -191,7 +191,6 @@ class ViewController: UIViewController {
         @unknown default:
             break
         }
-        print("крыж по вашему распоряжению прибыл")
     }
     
     private func orientationSet(orientation: inout DeviceOrientation) {
