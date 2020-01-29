@@ -191,21 +191,11 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         layoutSet()
-     
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        if orientation == .portrait {
-            orientation = .landscape
-        } else {
-            orientation = .portrait
-        }
-        print("вызов крыжа")
-        layoutSet()
-        
     }
     
     override func viewWillLayoutSubviews() {
+        orientationSet(orientation: &orientation)
+
         //MARK: Rectangles
         
         //MARK: Buttons
@@ -217,7 +207,7 @@ class ViewController: UIViewController {
     private func orientationSet(orientation: inout DeviceOrientation) {
         if view.frame.size.width < view.frame.size.height {
             orientation = .portrait
-        } else { orientation =  .landscape}
+        } else { orientation =  .landscape }
     }
     
     private func layoutSet() {
