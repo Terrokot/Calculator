@@ -25,6 +25,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     
+    enum DeviceOrientation {
+        case portrait
+        case landscape
+    }
+    
+    var orientation: DeviceOrientation = .portrait
+    
     @IBAction func number(_ sender: UIButton) {
         
         if performMath && breaker {
@@ -157,7 +164,40 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        orientationSet(orientation: &orientation)
+        print(orientation)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if orientation == .landscape {
+                   topView.frame = CGRect(x: 0, y: 0, width: 301, height: 414)
+                   bottomView.frame.size.height = 414
+                   bottomView.frame.size.width = 435
+               } else {
+                   topView.frame = CGRect(x: 0, y: 0, width: 414, height: 250)
+                   bottomView.frame.size.height = 486
+                   bottomView.frame.size.width = 414
+               }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if orientation == .portrait {
+            orientation = .landscape
+        } else {
+            orientation = .portrait
+        }
+        
+        if orientation == .landscape {
+            topView.frame = CGRect(x: 0, y: 0, width: 301, height: 414)
+            bottomView.frame.size.height = 414
+            bottomView.frame.size.width = 435
+        } else {
+            topView.frame = CGRect(x: 0, y: 0, width: 414, height: 250)
+            bottomView.frame.size.height = 486
+            bottomView.frame.size.width = 414
+        }
+        
     }
     
     override func viewWillLayoutSubviews() {
@@ -167,11 +207,14 @@ class ViewController: UIViewController {
         //MARK: Buttons
         equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
         equally.layer.cornerRadius = equally.frame.height / 2
-
-
-
-        
+    }
+    
+    private func orientationSet(orientation: inout DeviceOrientation) {
+        if view.frame.size.width < view.frame.size.height {
+            orientation = .portrait
+        } else { orientation =  .landscape}
     }
     
 }
+
 
