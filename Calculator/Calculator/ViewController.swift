@@ -130,6 +130,9 @@ class ViewController: UIViewController {
     
     //MARK: UI
     
+    @IBOutlet var buttons: [UIButton]!
+    
+    
     //1st row
     @IBOutlet weak var firstRow: UIView!
     @IBOutlet weak var button7: UIButton!
@@ -178,7 +181,7 @@ class ViewController: UIViewController {
         case .phone:
             iphoneLayoutSet()
         case .pad:
-            print("yyyyyyy")
+            ipadLayoutSet()
         case .unspecified:
             break
         case .tv:
@@ -197,7 +200,14 @@ class ViewController: UIViewController {
         } else { orientation =  .landscape }
     }
     
+    //MARK: IPHONE
+    
     private func iphoneLayoutSet() {
+        
+        for i in buttons {
+            i.titleLabel?.font = UIFont(name: "Futura-Medium", size: 24)
+        }
+        
         if orientation == .landscape {
             //MARK: LANDSCAPE
             
@@ -335,10 +345,152 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: IPAD
     private func ipadLayoutSet() {
         
-    }
+        for i in buttons {
+            i.titleLabel?.font = UIFont(name: "Futura-Medium", size: 64)
+        }
+        if orientation == .landscape {
+            //MARK: LANDSCAPE
+            
+            let landscapeButtonSize: CGFloat = 150
+            
+            // frame and position
+            //MARK: Views
+            topView.frame = CGRect(x: 0, y: 0, width: 479, height: 834)
+            bottomView.frame = CGRect(x: 479, y: 0, width: 715, height: 834)
+            
+            resultLabel.frame = CGRect(x: 0, y: 40, width: 479 - 40 , height: 90)
+            resultLabel.font = UIFont(name: "Futura-Medium", size: 90)
+            
+            task.frame = CGRect(x: 40, y: 730, width: 479, height: 48)
+            task.font = UIFont(name: "Futura-Medium", size: 48)
+            task.textAlignment = .left
+            
+            //MARK: Buttons
+            
+          
+            //FistRow
+            
+            firstRow.frame = CGRect(x: 0, y: 14 , width: bottomView.frame.size.width, height: landscapeButtonSize)
+            
+            button7.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button8.frame = CGRect(x: 27 + landscapeButtonSize + 20 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button9.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonDivision.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //SecondRow
+            secondRow.frame = CGRect(x: 0, y: 14 + landscapeButtonSize + 20, width: bottomView.frame.size.width, height: landscapeButtonSize)
+            
+            button4.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button5.frame = CGRect(x: 27 + landscapeButtonSize + 20 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button5.layer.cornerRadius = landscapeButtonSize / 2
+            button5.layer.borderWidth = 3
+            button5.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+            button6.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonMultiplication.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //ThirdROW
+            thirdRow.frame = CGRect(x: 0, y: 14 + (landscapeButtonSize + 20) * 2, width: bottomView.frame.size.width, height: landscapeButtonSize)
+            
+            button1.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button2.frame = CGRect(x: 27 + landscapeButtonSize + 20 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button3.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            
+            buttonMinus.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //FourthROW
+            fouthRow.frame = CGRect(x: 0, y: 14 + (landscapeButtonSize + 20) * 3, width: bottomView.frame.size.width, height: landscapeButtonSize)
+            
+            button0.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            button00.frame = CGRect(x: 27 + landscapeButtonSize + 20 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            buttonPoint.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            buttonPlus.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            //ControlRow
+            controlRow.frame = CGRect(x: 0, y: 14 + (landscapeButtonSize + 20) * 4, width: bottomView.frame.size.width, height: landscapeButtonSize)
+            
+            buttonClear.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            equally.frame = CGRect(x: 27 + landscapeButtonSize + 54, y: 10, width: landscapeButtonSize, height: landscapeButtonSize)
+            
+            equally.frame.size = CGSize(width: 412, height: 86)
+            equally.layer.cornerRadius = equally.frame.height / 2
+            equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
+            
+        } else {
+            //MARK: PORTRAIT
+            let portraitButtonSize: CGFloat = 150
+            
+            //MARK: Views
+            
+            topView.frame = CGRect(x: 0, y: 0, width: 834, height: 360)
+            bottomView.frame = CGRect(x: 0, y: 360, width: 834, height: 834)
+            
+            resultLabel.frame = CGRect(x: 0, y: 225, width: 834 - 30, height: 90)
+            resultLabel.font = UIFont(name: "Futura-Medium", size: 90)
+            
+            task.frame = CGRect(x: 0, y: 146, width: 834 - 30, height: 48)
+            task.font = UIFont(name: "Futura-Medium", size: 48)
+            task.textAlignment = .right
+            
+            //MARK: Buttons
+            
+            
+            //FistRow
+            firstRow.frame = CGRect(x: 0, y: 20 , width: bottomView.frame.size.width, height: portraitButtonSize)
+            
+            button7.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button8.frame = CGRect(x: 32 + portraitButtonSize + 60 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button9.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            buttonDivision.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            //SecondRow
+            secondRow.frame = CGRect(x: 0, y: 20 + portraitButtonSize + 20, width: bottomView.frame.size.width, height: portraitButtonSize)
+            button4.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button5.frame = CGRect(x: 32 + portraitButtonSize + 60 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button5.layer.cornerRadius = portraitButtonSize / 2
+            button6.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
 
+            buttonMultiplication.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            //ThirdRow
+            thirdRow.frame = CGRect(x: 0, y: 20 + (portraitButtonSize + 20) * 2 , width: bottomView.frame.size.width, height: portraitButtonSize)
+            
+            button1.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button2.frame = CGRect(x: 32 + portraitButtonSize + 60 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button3.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+
+            buttonMinus.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            // FourthRow
+            fouthRow.frame = CGRect(x: 0, y: 20 + (portraitButtonSize + 20) * 3 , width: bottomView.frame.size.width, height: portraitButtonSize)
+            
+            button0.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            button00.frame = CGRect(x: 32 + portraitButtonSize + 60 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            buttonPoint.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+
+            buttonPlus.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            
+            // ControlRow
+            controlRow.frame = CGRect(x: 0, y: 20 + (portraitButtonSize + 20) * 4 , width: bottomView.frame.size.width, height: portraitButtonSize)
+            
+            buttonClear.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
+            buttonClear.titleLabel?.textAlignment = .center
+            
+            equally.frame = CGRect(x: 32 + portraitButtonSize + 80, y: 10, width: 529, height: 86)
+            equally.layer.cornerRadius = equally.frame.height / 2
+            equally.layer.backgroundColor = UIColor(red: 0.392, green: 0.78, blue: 1, alpha: 1).cgColor
+        }
+    }
 }
+
+
 
 
