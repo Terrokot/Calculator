@@ -242,8 +242,8 @@ class ViewController: UIViewController {
             button4.frame = CGRect(x: 36, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             button5.frame = CGRect(x: 36 + landscapeButtonSize + 25 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             button5.layer.cornerRadius = landscapeButtonSize / 2
-            button5.layer.borderWidth = 3
-            button5.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+            button5.layer.borderWidth = 5
+            button5.layer.borderColor = UIColor(red:0.24, green:0.24, blue:0.25, alpha:1.0).cgColor
             button6.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             
             buttonMultiplication.frame = CGRect(x: 36 + (landscapeButtonSize + 25) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
@@ -310,6 +310,9 @@ class ViewController: UIViewController {
             button4.frame = CGRect(x: 16, y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button5.frame = CGRect(x: 16 + portraitButtonSize + 10 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button5.layer.cornerRadius = portraitButtonSize / 2
+            button5.layer.borderWidth = 5
+            button5.layer.borderColor = UIColor(red:0.24, green:0.24, blue:0.25, alpha:1.0).cgColor
+
             button6.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             
             buttonMultiplication.frame = CGRect(x: 16 + (portraitButtonSize + 10) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
@@ -386,8 +389,8 @@ class ViewController: UIViewController {
             button4.frame = CGRect(x: 27, y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             button5.frame = CGRect(x: 27 + landscapeButtonSize + 20 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             button5.layer.cornerRadius = landscapeButtonSize / 2
-            button5.layer.borderWidth = 3
-            button5.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2).cgColor
+            button5.layer.borderWidth = 8
+            button5.layer.borderColor = UIColor(red:0.24, green:0.24, blue:0.25, alpha:1.0).cgColor
             button6.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 2 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
             
             buttonMultiplication.frame = CGRect(x: 27 + (landscapeButtonSize + 20) * 3 , y: 0, width: landscapeButtonSize, height: landscapeButtonSize)
@@ -455,6 +458,9 @@ class ViewController: UIViewController {
             button4.frame = CGRect(x: 32, y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button5.frame = CGRect(x: 32 + portraitButtonSize + 60 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
             button5.layer.cornerRadius = portraitButtonSize / 2
+            button5.layer.borderWidth = 8
+            button5.layer.borderColor = UIColor(red:0.24, green:0.24, blue:0.25, alpha:1.0).cgColor
+            
             button6.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 2 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
 
             buttonMultiplication.frame = CGRect(x: 32 + (portraitButtonSize + 60) * 3 , y: 0, width: portraitButtonSize, height: portraitButtonSize)
